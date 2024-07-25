@@ -3,12 +3,12 @@ plugins {
 }
 
 android {
-    namespace = "com.synx.myapplication"
+    namespace = "com.synx.counter"
     compileSdk = 34
 
     defaultConfig {
-        applicationId = "com.synx.myapplication"
-        minSdk = 24
+        applicationId = "com.synx.counter"
+        minSdk = 21
         targetSdk = 34
         versionCode = 1
         versionName = "1.0"

@@ -1,4 +1,4 @@
-package com.synx.myapplication;
+package com.synx.counter;
 
 import org.junit.Test;
 

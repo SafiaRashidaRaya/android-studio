@@ -1,4 +1,4 @@
-package com.synx.myapplication;
+package com.synx.counter;
 
 import android.os.Bundle;
 
