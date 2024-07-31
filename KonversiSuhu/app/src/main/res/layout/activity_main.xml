@@ -36,7 +36,7 @@
         app:layout_constraintTop_toBottomOf="@+id/imageView5" />
 
     <EditText
-        android:id="@+id/editTextNumberDecimal"
+        android:id="@+id/etNilai"
         android:layout_width="383dp"
         android:layout_height="59dp"
         android:layout_marginStart="16dp"
@@ -51,17 +51,18 @@
 
     <Spinner
         android:id="@+id/spinner"
-        android:layout_width="379dp"
-        android:layout_height="37dp"
+        android:layout_width="382dp"
+        android:layout_height="58dp"
         android:layout_marginStart="16dp"
         android:layout_marginTop="8dp"
         android:layout_marginEnd="16dp"
+        android:entries="@array/pilihan"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView" />
 
     <Button
-        android:id="@+id/button"
+        android:id="@+id/btnKonversi"
         android:layout_width="0dp"
         android:layout_height="51dp"
         android:layout_marginStart="16dp"
@@ -69,14 +70,15 @@
         android:layout_marginEnd="16dp"
         android:background="@color/colorAccent"
         android:lineSpacingExtra="16sp"
+        android:onClick="btnKonversi"
         android:text="Konversi"
         android:textColor="@color/white"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editTextNumberDecimal" />
+        app:layout_constraintTop_toBottomOf="@+id/etNilai" />
 
     <TextView
-        android:id="@+id/textView2"
+        android:id="@+id/tvHasil"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
@@ -88,6 +90,6 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/button"
+        app:layout_constraintTop_toBottomOf="@+id/btnKonversi"
         app:layout_constraintVertical_bias="0.0" />
 </androidx.constraintlayout.widget.ConstraintLayout>
