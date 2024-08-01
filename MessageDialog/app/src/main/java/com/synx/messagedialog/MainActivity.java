@@ -1,8 +1,12 @@
 package com.synx.messagedialog;
 
+import android.content.DialogInterface;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.Toast;
 
 import androidx.activity.EdgeToEdge;
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
@@ -57,5 +61,51 @@ public class MainActivity extends AppCompatActivity {
         super.onDestroy();
 
         System.out.println("onDestroy");
+    }
+    
+    public void showToast(String pesan){
+        Toast.makeText(this, pesan, Toast.LENGTH_SHORT).show();
+    }
+
+    public void showAlert(String pesan){
+        AlertDialog.Builder buatAlert = new AlertDialog.Builder(this);
+        buatAlert.setTitle("PERHATIAN  !!");
+        buatAlert.setMessage(pesan);
+
+        buatAlert.show();
+    }
+
+    public void showAlertButton(String pesan){
+        AlertDialog.Builder showAlert = new AlertDialog.Builder(this);
+        showAlert.setTitle("Perhatian pt.2");
+        showAlert.setMessage(pesan);
+
+        showAlert.setPositiveButton("Ya", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialogInterface, int i) {
+                showToast("Data sudah dihapus.");
+            }
+        });
+
+        showAlert.setNegativeButton("TIDAK", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialogInterface, int i) {
+                showToast("Data tidak dihapus.");
+            }
+        });
+
+        showAlert.show();
+    }
+
+    public void btnToast(View view) {
+        showToast("Belajar membuat pesan.");
+    }
+
+    public void btnAlert(View view) {
+        showAlert("Silakan dicoba.");
+    }
+
+    public void btnAlertDIalogButton(View view) {
+        showAlertButton("Yakin akan menghapus?");
     }
 }
