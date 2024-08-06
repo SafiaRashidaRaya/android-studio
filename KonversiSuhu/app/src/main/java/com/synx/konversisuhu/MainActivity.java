@@ -52,11 +52,20 @@ public class MainActivity extends AppCompatActivity {
         if (etNilai.getText().toString().equals("")){
             Toast.makeText(this, "Nilai tidak boleh kosong", Toast.LENGTH_SHORT).show();
         }else {
-            if (pilihan.equals("Celcius to Reamur")){
+            if (pilihan.equals("Celsius to Reamur")){
                 cToR();
             }
-            if (pilihan.equals("Celcius to Fahrenheit")){
+            if (pilihan.equals("Celsius to Fahrenheit")){
                 cToF();
+            }
+            if (pilihan.equals("Celsius to Kelvin")){
+                cToK();
+            }
+            if (pilihan.equals("Reamur to Celsius")){
+                rToC();
+            }
+            if (pilihan.equals("Reamur to Fahrenheit")){
+                rToF();
             }
         }
     }
@@ -68,6 +77,27 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void cToF(){
-        Toast.makeText(this, "Belum dibuat", Toast.LENGTH_SHORT).show();
+        double suhu = Double.parseDouble(etNilai.getText().toString());
+        double hasil = suhu * (9.0/5.0) + 32;
+        tvHasil.setText(hasil+"");
     }
+
+    public void cToK(){
+        double suhu = Double.parseDouble(etNilai.getText().toString());
+        double hasil = suhu + 273.15;
+        tvHasil.setText(hasil+"");
+    }
+
+    public void rToC(){
+        double suhu = Double.parseDouble(etNilai.getText().toString());
+        double hasil = suhu / 0.8;
+        tvHasil.setText(hasil+"");
+    }
+
+    public void rToF(){
+        double suhu = Double.parseDouble(etNilai.getText().toString());
+        double hasil = suhu * (9.0/4.0) + 32;
+        tvHasil.setText(hasil+"");
+    }
+
 }
