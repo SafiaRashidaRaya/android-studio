@@ -19,6 +19,30 @@ public class Database extends SQLiteOpenHelper {
 
     }
 
+    boolean runSQL(String sql){
+        try {
+
+            db.execSQL(sql);
+            return true;
+
+
+        }catch (Exception e){
+            return false;
+        }
+    }
+
+    public void buatTabel(){
+        String tblbarang = "CREATE TABLE \"tblbarang\" (\n" +
+                "\t\"idbarang\"\tINTEGER,\n" +
+                "\t\"barang\"\tTEXT,\n" +
+                "\t\"stok\"\tREAL,\n" +
+                "\t\"harga\"\tREAL,\n" +
+                "\tPRIMARY KEY(\"idbarang\" AUTOINCREMENT)\n" +
+                ");";
+
+        runSQL(tblbarang);
+    }
+
     @Override
     public void onCreate(SQLiteDatabase sqLiteDatabase) {
 

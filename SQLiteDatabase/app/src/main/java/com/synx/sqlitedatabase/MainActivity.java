@@ -23,9 +23,11 @@ public class MainActivity extends AppCompatActivity {
             return insets;
         });
         load();
+
     }
 
     public void load(){
         db = new Database(this);
+        db.buatTabel();
     }
 }
