@@ -1,6 +1,7 @@
 package com.synx.sqlitedatabase;
 
 import android.content.Context;
+import android.database.Cursor;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
@@ -30,7 +31,7 @@ public class MainActivity extends AppCompatActivity {
             return insets;
         });
         load();
-
+        selectData();
     }
 
     public void load(){
@@ -74,5 +75,11 @@ public class MainActivity extends AppCompatActivity {
 
     public void pesan(String isi){
         Toast.makeText(this, isi, Toast.LENGTH_SHORT).show();
+    }
+
+    public void selectData(){
+        String sql = "SELECT * FROM tblbarang ORDER BY barang ASC";
+        Cursor cursor = db.select(sql);
+        pesan(cursor.getCount()+"");
     }
 }
