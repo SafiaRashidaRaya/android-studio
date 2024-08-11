@@ -1,6 +1,7 @@
 package com.synx.sqlitedatabase;
 
 import android.content.Context;
+import android.content.DialogInterface;
 import android.database.Cursor;
 import android.os.Bundle;
 import android.view.View;
@@ -9,6 +10,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.activity.EdgeToEdge;
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
@@ -126,19 +128,35 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void deleteData(String id){
-        String idbarang = id;
-        String sql = "DELETE FROM tblbarang WHERE idbarang = "+id+";";
-        if (db.runSQL(sql)){
-            pesan("Data sudah dihapus");
-            selectData();
-        }else {
-            pesan("Data tidak bisa dihapus");
-        }
+        idbarang = id;
+
+        AlertDialog.Builder al = new AlertDialog.Builder(this);
+        al.setTitle("WARNING:");
+        al.setMessage("Yakin ingin menghapus item ini?");
+        al.setPositiveButton("Ya", new DialogInterface.OnClickListener() {
+            String sql = "DELETE FROM tblbarang WHERE idbarang = "+idbarang+";";
+            @Override
+            public void onClick(DialogInterface dialogInterface, int i) {
+                if (db.runSQL(sql)){
+                    pesan("Data sudah dihapus");
+                    selectData();
+                }else {
+                    pesan("Data tidak bisa dihapus");
+                }
+            }
+        });
+        al.setNegativeButton("Tidak", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialogInterface, int i) {
+                dialogInterface.cancel();
+            }
+        });
+        al.show();
     }
 
     public void selectUpdate(String id){
         idbarang = id;
-        String sql = "SELECT * FROM tblbarang WHERE idbarang = "+id+";";
+        String sql = "SELECT * FROM tblbarang WHERE idbarang = "+idbarang+";";
         Cursor cursor = db.select(sql);
         cursor.moveToNext();
 
